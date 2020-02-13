@@ -53,6 +53,7 @@
         "set": "cpp",
         "unordered_set": "cpp",
         "ratio": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "climits": "cpp"
     }
 }

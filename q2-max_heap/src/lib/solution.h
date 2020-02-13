@@ -1,8 +1,10 @@
 #ifndef TEMPLATE_SOLUTION_H
 #define TEMPLATE_SOLUTION_H
 
+#include <iostream>
 #include <vector>       // std::vector<int>
-#include <limits>       // INT_MAX
+#include <climits>      // INT_MAX (linux)
+#include <limits>       // INT_MAX (darwin)
 
 // Only methods which are marked by "GT" should be tested
 class MaxHeap 
