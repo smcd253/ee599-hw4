@@ -1,6 +1,7 @@
 #include "solution.h"
 
 /******************** get index functions ********************/
+// Runtime = &theta;(5) --> O(1)
 int MaxHeap::GetParentIndex(int i)
 {
     int result = -1;
@@ -14,6 +15,7 @@ int MaxHeap::GetParentIndex(int i)
     return result;
 } 
 
+// Runtime = &theta;(5) --> O(1)
 int MaxHeap::GetLeftIndex(int i)
 {
     int result = -1;
@@ -24,10 +26,10 @@ int MaxHeap::GetLeftIndex(int i)
         result = index;
     }
     
-    // printf("left index result = %d\n", result);
     return result;
 }
 
+// Runtime = &theta;(5) --> O(1)
 int MaxHeap::GetRightIndex(int i)
 {
     int result = -1;
@@ -38,10 +40,10 @@ int MaxHeap::GetRightIndex(int i)
         result = index;
     }
     
-    // printf("right index result = %d\n", result);
     return result;
 }
 
+// Runtime = &theta;(1 + 2*9 + 5) --> O(1)
 int MaxHeap::GetLargestChildIndex(int i)
 {
     int result = -1;
@@ -72,11 +74,11 @@ int MaxHeap::GetLargestChildIndex(int i)
         result = this->GetLeftIndex(i);
     }
 
-    // printf("largest result = %d\n", result);
     return result;    
 }
 
 /******************** get value functions ********************/
+// Runtime = &theta;(1 + 5 + 3) --> O(1)
 int MaxHeap::GetLeft(int i)
 {
     int result = INT_MAX;
@@ -87,10 +89,10 @@ int MaxHeap::GetLeft(int i)
         result = this->data_[index];
     }
 
-    // printf("left result = %d\n", result);
     return result;
 }
 
+// Runtime = &theta;(1 + 5 + 3) --> O(1)
 int MaxHeap::GetRight(int i)
 {
     int result = INT_MAX;
@@ -105,6 +107,7 @@ int MaxHeap::GetRight(int i)
     return result;
 }
 
+// Runtime = &theta;(1 + 5 + 3) --> O(1)
 int MaxHeap::GetParent(int i)
 {
     int result = INT_MAX;
@@ -119,6 +122,7 @@ int MaxHeap::GetParent(int i)
 }
 
 /******************** manipulate heap functions ********************/
+// Runtime = &theta;(4) --> O(1)
 int MaxHeap::top()
 {
     int result = 0;
@@ -142,6 +146,7 @@ void swap(int& a, int& b)
     b = temp;
 }
 
+// Runtime = &theta;(4) --> O(1)
 void MaxHeap::push(int v)
 {
     // add to end
@@ -153,6 +158,7 @@ void MaxHeap::push(int v)
     
 }
 
+// Runtime = &theta;(1 + 3 + 30*log(n)) --> O(log(n))
 void MaxHeap::pop()
 {
     if(this->data_.size() > 0)
@@ -169,6 +175,7 @@ void MaxHeap::pop()
     
 }
 
+// Runtime = &theta;((3 + 1)*log(n)) --> O(log(n))
 void MaxHeap::TrickleUp(int i)
 {
     while (i != 0 && GetParent(i) < this->data_[i])
@@ -177,6 +184,8 @@ void MaxHeap::TrickleUp(int i)
         i = GetParentIndex(i);
     }
 }
+
+// Runtime = &theta;(30*log(n)) --> O(log(n))
 void MaxHeap::TrickleDown(int i)
 {
     while (i != (int)this->data_.size() - 1 && 
