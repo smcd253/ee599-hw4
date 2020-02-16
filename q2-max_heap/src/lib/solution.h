@@ -10,7 +10,7 @@
 class MaxHeap 
 {
     private:
-        // std::vector<int> data_;
+        std::vector<int> data_;
     public:
         MaxHeap() : data_() {} // default constructor
 
@@ -31,8 +31,6 @@ class MaxHeap
         void pop(); // GT
         void TrickleUp(int i);
         void TrickleDown(int i);
-
-        std::vector<int> data_;
 };
 
 #endif

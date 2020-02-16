@@ -6,7 +6,7 @@ int MaxHeap::GetParentIndex(int i)
     int result = -1;
 
     // input validation
-    if (i > 0)
+    if (i > 0 && (int)this->data_.size() > 0)
     {
         result = (i - 1) / 2;
     }
@@ -155,16 +155,18 @@ void MaxHeap::push(int v)
 
 void MaxHeap::pop()
 {
-    // delete root
-    swap(this->data_[0], this->data_[this->data_.size() - 1]);
-    printf("popping %d\n", this->data_[this->data_.size() - 1]);
-    printf("root = %d\n", this->data_[0]);
-    this->data_.pop_back();
-
     if(this->data_.size() > 0)
     {
+        // swap root for last value in data_
+        swap(this->data_[0], this->data_[this->data_.size() - 1]);
+        this->data_.pop_back();
         this->TrickleDown(0);
     }
+    else
+    {
+        printf("Error: Heap empty. Nothing to pop.\n");
+    }
+    
 }
 
 void MaxHeap::TrickleUp(int i)
@@ -183,6 +185,5 @@ void MaxHeap::TrickleDown(int i)
         int lc_index = GetLargestChildIndex(i);
         swap(this->data_[i], data_[lc_index]);
         i = lc_index;
-        printf("post swap = %d\n", this->data_[i]);
     }
 }

@@ -4,7 +4,7 @@
 int main()
 {
     MaxHeap heap;
-    heap.data_ = {};
+    // heap.data_ = {};
     // print out complete tree
     // breadth first traversal
     for (int i = 0; i < 7; i++)
