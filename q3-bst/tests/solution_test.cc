@@ -75,22 +75,56 @@ TEST(BST_FIND, LEAF)
 }
 
 /******************** BST::erase() ********************/
-// TEST(BST_ERASE, STANDARD)
-// {
-//     BST bst;
+TEST(BST_ERASE, STANDARD)
+{
+    BST bst;
 
-//     for (int i = 0; i < 10; i++)
-//     {
-//         bst.push(i);
-//     }
-//     testing::internal::CaptureStdout();
-//     bst.erase(3);
-//     bool expected = true;
-//     bool actual = bst.erase(3);
-//     EXPECT_EQ(expected, actual);
+    for (int i = 0; i < 10; i++)
+    {
+        bst.push(i);
+    }
+    bool expected = true;
+    bool actual = bst.erase(3);
+    EXPECT_EQ(expected, actual);
 
-//     bst.print_in_order();
-//     std::string expected_print = "0 1 2 3 4 5 6 7 8 9 ";
-//     std::string actual_print = testing::internal::GetCapturedStdout();
-//     EXPECT_EQ(expected_print, actual_print);
-// }
+    testing::internal::CaptureStdout();
+    bst.print_in_order();
+    std::string expected_print = "0 1 2 4 5 6 7 8 9 \n";
+    std::string actual_print = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(expected_print, actual_print);
+}
+
+TEST(BST_ERASE, EMPTY)
+{
+    BST bst;
+
+    bool expected = false;
+    bool actual = bst.erase(3);
+    EXPECT_EQ(expected, actual);
+}
+
+TEST(BST_ERASE, ROOT)
+{
+    BST bst;
+
+    for (int i = 0; i < 10; i++)
+    {
+        bst.push(i);
+    }
+    bool expected = true;
+    bool actual = bst.erase(5);
+    EXPECT_EQ(expected, actual);
+}
+
+TEST(BST_ERASE, LEAF)
+{
+    BST bst;
+
+    for (int i = 0; i < 10; i++)
+    {
+        bst.push(i);
+    }
+    bool expected = true;
+    bool actual = bst.erase(9);
+    EXPECT_EQ(expected, actual);
+}

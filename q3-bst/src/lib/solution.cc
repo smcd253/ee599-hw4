@@ -16,6 +16,7 @@ TreeNode* find_helper(TreeNode*& node, int key)
             result = find_helper(node->right, key);
         }
     }
+    
     return result;
 }
 
@@ -41,73 +42,87 @@ TreeNode* get_min(TreeNode*& node)
     return result;
 }
 
+TreeNode* erase_helper(TreeNode*& node, int key)
+{
+    if(node != nullptr)
+    {
+        if(key < node->val)
+        {
+            node->left = erase_helper(node->left, key);
+        }
+        else if(key > node->val)
+        {
+            node->right = erase_helper(node->right, key);
+        }
+        else
+        {
+            if(node->left == nullptr)
+            {
+                TreeNode* temp = node->right;
+                delete node;
+                return temp;
+            }
+            else if (node->right == nullptr)
+            {
+                TreeNode* temp = node->left;
+                delete node;
+                return temp;
+            }
+            else
+            {
+                TreeNode* temp = get_min(node->right);
+                node->val = temp->val;
+                node->right = erase_helper(node->right, temp->val);
+            }
+            
+        }
+    }
+    return node;
+}
+
+// Runtime = &theta;(2*H), where H &isin;[log(n), n] --> O(n)
 bool BST::erase(int key)
 {
     bool result = true;
-    TreeNode* node = find_helper(this->root_, key);
-    if(node != nullptr)
+    result = this->find(key);
+    if(result)
     {
-        printf("node->val = %d\n", node->val);
-        // if one or no children
-        if (node->left == nullptr && node->right == nullptr)
-        {
-            delete node;
-        }
-        else if(node->left == nullptr) 
-        {
-            node->val = node->right->val;
-            delete node->right;
-        }
-        else if(node->right == nullptr) 
-        {
-            node->val = node->left->val;
-            delete node->left;
-        }
-        else 
-        {
-            TreeNode* temp = get_min(node->right);
-            node->val = temp->val;
-            delete temp;
-        }
-    }
-    else
-    {
-        result = false;
+        this->root_ = erase_helper(this->root_, key);
     }
     return result;
 }
 
-bool BST::insert(TreeNode*& node, int key)
+// builds a new tree every time a key is added
+TreeNode* BST::insert(TreeNode*& node, int key)
 {
-    bool result = true;
     if (node == nullptr) 
     {
         node = new TreeNode(key);
     } 
     else if (key < node->val) 
     {
-        insert(node->left, key);
-        printf("node->left->val = %d\n", node->left->val);
+        node->left = insert(node->left, key);
     } 
     else if (key > node->val) 
     {
-        insert(node->right, key);
-        printf("node->right->val = %d\n", node->right->val);
+        node->right = insert(node->right, key);
     }
-    else // key == node->val
-    {
-        result = false;
-    }
-    return result;
+    // else key already in BST
+    return node;
 }
 
-// Runtime = &theta;(H), where H &isin;[log(n), n] --> O(n)
+// Runtime = &theta;(2*H), where H &isin;[log(n), n] --> O(n)
 void BST::push(int key)
 {
-    if (!insert(this->root_, key))
+    if(!this->find(key))
+    {
+        this->root_ = insert(this->root_, key); 
+    }
+    else
     {
         printf("BST already contains key %d.\n", key);
     }
+    
 }
 
 void BST::destroy(TreeNode*& node)

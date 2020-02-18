@@ -88,6 +88,27 @@ Runtime = &theta;(30*log(n)) --> O(log(n))
 ## Q3
 **Runtime Analysis**
 
+```c++
+BST(std::vector<int> initial_values)
+```
+Runtime = &theta;(n*H), where H &isin;[log(n), n] --> O(n^2)
+
+```c++
+void BST::push(int key)
+```
+Runtime = &theta;(2*H), where H &isin;[log(n), n] --> O(n)
+
+```c++
+BST::find(int key)
+```
+Runtime = &theta;(H), where H &isin;[log(n), n] --> O(n)
+
+```c++
+bool BST::erase(int key)
+```
+Runtime = &theta;(2*H), where H &isin;[log(n), n] --> O(n)
+
+
 ## Q4
 **Runtime Analysis**
 

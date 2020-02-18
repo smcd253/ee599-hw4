@@ -19,13 +19,23 @@ class BST
 {
     private:
         TreeNode* root_;
-        bool insert(TreeNode*& node, int key);
+        TreeNode* insert(TreeNode*& node, int key);
         void destroy(TreeNode*& node);
     public:
+
+        // default constructor
         BST() : root_(nullptr) {}
+
         // Inserts elements of initial_values
         // one by one into the Tree
-        BST(std::vector<int> initial_values);
+        // Runtime = &theta;(n*H), where H &isin;[log(n), n] --> O(n^2)
+        BST(std::vector<int> initial_values)
+        {
+            for (auto n : initial_values)
+            {
+                push(n);
+            }
+        }
 
         // destructor
         ~BST()
