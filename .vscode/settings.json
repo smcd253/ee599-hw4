@@ -77,7 +77,8 @@
     "unordered_set": "cpp",
     "memory_resource": "cpp",
     "numeric": "cpp",
-    "random": "cpp"
+    "random": "cpp",
+    "queue": "cpp"
   },
   "lldb.displayFormat": "auto",
   "lldb.showDisassembly": "never",

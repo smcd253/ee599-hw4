@@ -260,6 +260,7 @@ TEST(MAXHEAP_POP, SINGULAR)
     
     max_heap.push(1);
     int expected = 1;
+    
     int actual = max_heap.top();
     EXPECT_EQ(expected, actual);
     

@@ -39,8 +39,10 @@ Runtime = &theta;(2 + n + 1) --> O(n)
 cd q2-max_heap
 # run main function
 bazel run src/main:main 
-#run tests
+# run tests
 bazel run tests:tests
+# test for memory leaks
+bazel run --run_under=valgrind tests:tests
 ```
 
 **Runtime Analysis**
@@ -112,8 +114,10 @@ Runtime = &theta;(30*log(n)) --> O(log(n))
 cd q34-bst
 # run main function
 bazel run src/main:main 
-#run tests
+# run tests
 bazel run tests:tests
+# test for memory leaks
+bazel run --run_under=valgrind tests:tests
 ```
 
 **Runtime Analysis**
@@ -145,7 +149,7 @@ Runtime = &theta;(2*H), where H &isin;[log(n), n] --> O(n)
 cd q34-bst
 # run main function
 bazel run src/main:main 
-#run tests
+# run tests
 bazel run tests:tests
 ```
 
@@ -163,7 +167,7 @@ Runtime = &theta;(1 + 2*H + 4 + 2*HH + n), where H &isin;[log(n), n] --> O(n*log
 cd q5-heap_sort
 # run main function
 bazel run src/main:main 
-#run tests
+# run tests
 bazel run tests:tests
 ```
 
@@ -181,7 +185,7 @@ Runtime = &theta;(2 + n*log(n) + n + 2*n) --> O(nlog(n))
 cd q6-kth_largest
 # run main function
 bazel run src/main:main 
-#run tests
+# run tests
 bazel run tests:tests
 ```
 
