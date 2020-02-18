@@ -99,7 +99,7 @@ void BST::push(int key)
 Runtime = &theta;(2*H), where H &isin;[log(n), n] --> O(n)
 
 ```c++
-BST::find(int key)
+bool BST::find(int key)
 ```
 Runtime = &theta;(H), where H &isin;[log(n), n] --> O(n)
 
@@ -119,5 +119,15 @@ Runtime = &theta;(1 + 2*H + 4 + 2*HH + n), where H &isin;[log(n), n] --> O(n*log
 ## Q5
 **Runtime Analysis**
 
+```c++
+void Solution::heap_sort(std::vector<int>& input)
+```
+Runtime = &theta;(2 + n*log(n) + n + 2*n) --> O(nlog(n))
+
 ## Q6
 **Runtime Analysis**
+
+```c++
+int Solution::kth_largest(std::vector<int>& input, int k)
+```
+Runtime = &theta;(n*k), where k &isin; [1, n] --> O(n^2)
