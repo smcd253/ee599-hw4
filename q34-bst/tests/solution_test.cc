@@ -5,6 +5,7 @@
 #include <string>       // std::string
 #include <iostream>     // CaptureStdout
 
+
 /******************** BST::push() ********************/
 TEST(BST_PUSH, STANDARD)
 {
@@ -27,6 +28,43 @@ TEST(BST_PUSH, DUPLICATE)
     std::string actual = testing::internal::GetCapturedStdout();
 
     EXPECT_EQ(expected, actual);
+}
+
+/******************** BST(std::vector<int> initial_values) ********************/
+TEST(BST_CONSTRUCTOR, STANDARD)
+{
+    std::vector<int> input = {15, 11, 12, 10, 14, 13, 16, 18, 17, 20, 19};
+    BST bst(input);
+
+    testing::internal::CaptureStdout();
+    bst.print_in_order();
+    std::string expected_print = "10 11 12 13 14 15 16 17 18 19 20 \n";
+    std::string actual_print = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(expected_print, actual_print);
+}
+
+TEST(BST_CONSTRUCTOR, EMPTY)
+{
+    std::vector<int> input = {};
+    BST bst(input);
+
+    testing::internal::CaptureStdout();
+    bst.print_in_order();
+    std::string expected_print = "BST empty. Nothing to print.\n";
+    std::string actual_print = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(expected_print, actual_print);
+}
+
+TEST(BST_CONSTRUCTOR, SINGULAR)
+{
+    std::vector<int> input = {1};
+    BST bst(input);
+
+    testing::internal::CaptureStdout();
+    bst.print_in_order();
+    std::string expected_print = "1 \n";
+    std::string actual_print = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(expected_print, actual_print);
 }
 
 /******************** BST::find() ********************/
@@ -127,4 +165,40 @@ TEST(BST_ERASE, LEAF)
     bool expected = true;
     bool actual = bst.erase(9);
     EXPECT_EQ(expected, actual);
+}
+
+/******************** BST::print_by_level() ********************/
+TEST(BST_PRINT_BY_LEVEL, STANDARD)
+{
+    std::vector<int> input = {2, 3, 10, 1, 4, 5, 7};
+    BST bst(input);
+
+    testing::internal::CaptureStdout();
+    bst.print_by_level();
+    std::string expected_print = "2 1 3 10 4 5 7 \n";
+    std::string actual_print = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(expected_print, actual_print);
+}
+
+TEST(BST_PRINT_BY_LEVEL, EMPTY)
+{
+    BST bst;
+
+    testing::internal::CaptureStdout();
+    bst.print_by_level();
+    std::string expected_print = "BST empty. Nothing to print.\n";
+    std::string actual_print = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(expected_print, actual_print);
+}
+
+TEST(BST_PRINT_BY_LEVEL, SINGULAR)
+{
+    BST bst;
+    
+    bst.push(1);
+    testing::internal::CaptureStdout();
+    bst.print_by_level();
+    std::string expected_print = "1 \n";
+    std::string actual_print = testing::internal::GetCapturedStdout();
+    EXPECT_EQ(expected_print, actual_print);
 }

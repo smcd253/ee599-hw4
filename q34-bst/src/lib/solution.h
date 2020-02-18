@@ -3,8 +3,13 @@
 
 #include <iostream>
 #include <vector>       // std::vector<int>
-#include <climits>      // INT_MAX (linux)
-#include <limits>       // INT_MAX (darwin)
+#ifdef __linux__ 
+    #include <climits>      // INT_MAX (linux)
+
+#elif __APPLE__
+    #include <limits>       // INT_MAX (darwin)
+#endif
+
 #include <queue>        // std::queue<TreeNode*>
 
 // Only methods which are marked by "GT" should be tested
@@ -20,8 +25,8 @@ class BST
 {
     private:
         TreeNode* root_;
-        TreeNode* insert(TreeNode*& node, int key);
-        void destroy(TreeNode*& node);
+        TreeNode* insert(TreeNode* node, int key);
+        void destroy(TreeNode* node);
     public:
 
         // default constructor
@@ -32,6 +37,7 @@ class BST
         // Runtime = &theta;(n*H), where H &isin;[log(n), n] --> O(n^2)
         BST(std::vector<int> initial_values)
         {
+            root_ = nullptr;
             for (auto n : initial_values)
             {
                 push(n);
@@ -54,6 +60,7 @@ class BST
         // print in order for debugging problem 3
         void print_in_order();
 
+        // **GT**
         void print_by_level();
 };
 

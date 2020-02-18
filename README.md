@@ -108,9 +108,13 @@ bool BST::erase(int key)
 ```
 Runtime = &theta;(2*H), where H &isin;[log(n), n] --> O(n)
 
-
 ## Q4
 **Runtime Analysis**
+
+```c++
+void print_by_level()
+```
+Runtime = &theta;(1 + 2*H + 4 + 2*HH + n), where H &isin;[log(n), n] --> O(n*log(n))
 
 ## Q5
 **Runtime Analysis**
