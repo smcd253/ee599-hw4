@@ -3,11 +3,19 @@
 #include <vector>
 
 /******************** Solution::kth_largest() ********************/
-TEST(KTH_LARGEST, STANDARD) {
+TEST(KTH_LARGEST, STANDARD_1) {
   Solution solution;
   std::vector<int> input = {6, 2, 1, 4, 5, 3};
   int actual = solution.kth_largest(input, 1);
   int expected = 6;
+  EXPECT_EQ(expected, actual);
+}
+
+TEST(KTH_LARGEST, STANDARD_MID) {
+  Solution solution;
+  std::vector<int> input = {6, 2, 1, 4, 5, 3};
+  int actual = solution.kth_largest(input, 3);
+  int expected = 4;
   EXPECT_EQ(expected, actual);
 }
 

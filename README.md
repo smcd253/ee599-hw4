@@ -1,10 +1,20 @@
 # EE599 HW4 - Passing functions as a parameter and Trees (BST, Min Heap, Max Heap)
 
-Created - Spencer McDonough : 02/03/2020
-Last Modified - Spencer McDonough : 02/11/2020
+Created - Spencer McDonough : 02/03/2020<br>
+Last Modified - Spencer McDonough : 02/11/2020<br>
 University of Southern California
 
-## Q1
+## Q1 - Passing Functions as Parameters
+
+**Compile Instructions**
+```bash
+cd q1-fn_param
+# run main function
+bazel run src/main:main 
+#run tests
+bazel run tests:tests
+```
+
 **Runtime Analysis**
 
 ```c++
@@ -22,7 +32,17 @@ int Solution::reduce(std::vector<int> in)
 ```
 Runtime = &theta;(2 + n + 1) --> O(n)
 
-## Q2
+## Q2 - Implementing Max Heap
+
+**Compile Instructions**
+```bash
+cd q2-max_heap
+# run main function
+bazel run src/main:main 
+#run tests
+bazel run tests:tests
+```
+
 **Runtime Analysis**
 
 ```c++
@@ -85,7 +105,17 @@ void MaxHeap::TrickleDown(int i)
 ```
 Runtime = &theta;(30*log(n)) --> O(log(n))
 
-## Q3
+## Q3 - Implementing Binary Search Tree
+
+**Compile Instructions**
+```bash
+cd q34-bst
+# run main function
+bazel run src/main:main 
+#run tests
+bazel run tests:tests
+```
+
 **Runtime Analysis**
 
 ```c++
@@ -108,7 +138,17 @@ bool BST::erase(int key)
 ```
 Runtime = &theta;(2*H), where H &isin;[log(n), n] --> O(n)
 
-## Q4
+## Q4 - Breadth First (Level Order) Traversal of a BST
+
+**Compile Instructions**
+```bash
+cd q34-bst
+# run main function
+bazel run src/main:main 
+#run tests
+bazel run tests:tests
+```
+
 **Runtime Analysis**
 
 ```c++
@@ -116,7 +156,17 @@ void print_by_level()
 ```
 Runtime = &theta;(1 + 2*H + 4 + 2*HH + n), where H &isin;[log(n), n] --> O(n*log(n))
 
-## Q5
+## Q5 - Implementing Heap Sort using std::priority_queue
+
+**Compile Instructions**
+```bash
+cd q5-heap_sort
+# run main function
+bazel run src/main:main 
+#run tests
+bazel run tests:tests
+```
+
 **Runtime Analysis**
 
 ```c++
@@ -124,7 +174,17 @@ void Solution::heap_sort(std::vector<int>& input)
 ```
 Runtime = &theta;(2 + n*log(n) + n + 2*n) --> O(nlog(n))
 
-## Q6
+## Q6 - Kth Largest Item in a Vector 
+
+**Compile Instructions**
+```bash
+cd q6-kth_largest
+# run main function
+bazel run src/main:main 
+#run tests
+bazel run tests:tests
+```
+
 **Runtime Analysis**
 
 ```c++

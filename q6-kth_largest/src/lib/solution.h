@@ -15,7 +15,7 @@ public:
   /**
    * Find the k(th) largest element in an unsorted vector and return that value.
    * */
-  int kth_largest(std::vector<int>& input, int k);
+  int kth_largest(const std::vector<int>& input, int k);
 
 };
 

@@ -19,7 +19,11 @@ int main()
     }
     int k = 1;
     int k_l = solution.kth_largest(input, k);
-    printf("kth_largest = %d\n", k_l);
+    printf("kth_largest(k = %d) = %d\n", k, k_l);
+    
+    k = 3;
+    k_l = solution.kth_largest(input, k);
+    printf("kth_largest(k = %d) = %d\n", k, k_l);
 
     return EXIT_SUCCESS;
 }
