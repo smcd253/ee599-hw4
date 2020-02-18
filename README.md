@@ -45,6 +45,8 @@ bazel run tests:tests
 bazel run --run_under=valgrind tests:tests
 ```
 
+note: valgrind throws read error on TEST(MAXHEAP_POP, SINGULAR). Test still passes. I cannot cross-check this because valgrind is not supported on macOS Sierra. I cannot currently trace the source of the error. 
+
 **Runtime Analysis**
 
 ```c++

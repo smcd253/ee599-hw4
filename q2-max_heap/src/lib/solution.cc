@@ -188,11 +188,14 @@ void MaxHeap::TrickleUp(int i)
 // Runtime = &theta;(30*log(n)) --> O(log(n))
 void MaxHeap::TrickleDown(int i)
 {
-    while (i != (int)this->data_.size() - 1 && 
-         this->data_[GetLargestChildIndex(i)] > this->data_[i])
-    {   
-        int lc_index = GetLargestChildIndex(i);
-        swap(this->data_[i], data_[lc_index]);
-        i = lc_index;
+    if(this->data_.size() > 0)
+    {
+        while (i != (int)this->data_.size() - 1 && 
+            this->data_[GetLargestChildIndex(i)] > this->data_[i])
+        {   
+            int lc_index = GetLargestChildIndex(i);
+            swap(this->data_[i], data_[lc_index]);
+            i = lc_index;
+        }
     }
 }
