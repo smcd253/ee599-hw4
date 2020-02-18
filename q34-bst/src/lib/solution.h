@@ -5,6 +5,7 @@
 #include <vector>       // std::vector<int>
 #include <climits>      // INT_MAX (linux)
 #include <limits>       // INT_MAX (darwin)
+#include <queue>        // std::queue<TreeNode*>
 
 // Only methods which are marked by "GT" should be tested
 struct TreeNode 
@@ -49,8 +50,11 @@ class BST
         bool find(int key); 
         // **GT** Removes the key from the tree. If not successful, returns false.
         bool erase(int key);
+        
+        // print in order for debugging problem 3
         void print_in_order();
 
+        void print_by_level();
 };
 
 #endif

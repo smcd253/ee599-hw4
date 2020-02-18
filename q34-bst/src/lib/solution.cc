@@ -150,3 +150,42 @@ void BST::print_in_order()
     in_order(this->root_);
     printf("\n");
 }
+
+void build_queue(TreeNode* node, std::queue<TreeNode*>& q_nodes, int level, int current_level)
+{
+    if(current_level != level)
+    {
+        if(node->left != nullptr)
+        {
+            build_queue(node->left, q_nodes, level, current_level++);
+        }
+        if(node->right != nullptr)
+        {   
+            build_queue(node->right, q_nodes, level, current_level++);
+        }
+    }
+    if(node != nullptr)
+    {
+        q_nodes.push(node);
+    }
+}
+
+// void BST::print_by_level()
+// {
+//     int level = 0;
+//     std::queue<TreeNode*> q;
+//     size_t old_q_size = -1;
+//     while(old_q_size != q.size())
+//     {   
+//         old_q_size = q.size();
+//         build_queue(this->root_, q, level, 0);
+//         level++;
+//     }
+
+//     while(q.size() > 0)
+//     {
+//         printf("%d ", q.front()->val);
+//         q.pop();
+//     }
+//     printf("\n");
+// }

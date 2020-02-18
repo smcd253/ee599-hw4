@@ -14,7 +14,10 @@ int main()
 
     printf("Is 5 in our BST? ");
     printf("%s\n", bst->find(5) ? "Yes" : "No");
-
+    
+    printf("********************* print by level: *********************\n");
+    bst->print_by_level();
+    
     delete bst;
     
     printf("Now let's build a BST from the input vector:\n{");
